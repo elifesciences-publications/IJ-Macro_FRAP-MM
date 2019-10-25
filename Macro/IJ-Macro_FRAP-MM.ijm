@@ -66,6 +66,9 @@ function preProcess(){
 	roiManager("Reset");
 	
 	run("Metamorph rgn file to RoiManager...");
+	waitForUser("If necessary, for each ROI:\n1-Select it in the ROI Manager\n2-Manually shift the Roi\3-Click on update (Roi Manager)\nFinally, click on Ok");
+
+
 	nRois=roiManager("Count");
 
 	getRoi("reference fluorescence", "Ref_fluo");
@@ -122,13 +125,13 @@ function addAndRename(name){
 function quantify(){
 	run("Clear Results");
 	
-	for(t=1; t<=frames; t++){
+	for(t=1; t<=nSlices; t++){
 		row=nResults;
 		setResult("Time_(sec)", row, time[t-1]);
 		
 		for(i=0; i<roiManager("Count"); i++){
 			roiManager("Select", i);
-			Stack.setFrame(t);
+			setSlice(t);
 			getStatistics(area, mean, min, max, std, histogram);
 			
 			column="Roi"+(i+1);
