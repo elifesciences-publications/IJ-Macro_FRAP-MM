@@ -70,9 +70,8 @@ function preProcess(){
 
 	getRoi("reference fluorescence", "Ref_fluo");
 	getRoi("background", "Background");
-	
-	roiManager("Deselect");
-	roiManager("Remove Frame Info");
+
+	enlargeRois();
 	
 	Stack.setFrame(1);
 	run("StackReg ", "transformation=[Rigid Body]");
@@ -84,6 +83,23 @@ function getRoi(msg, roiName){
 	setTool("freehand");
 	waitForUser("Select the region\nwhere the "+msg+" should be evaluated\nthen click on Ok");
 	addAndRename(roiName);
+}
+
+//----------------------------------------
+function enlargeRois(){
+	Dialog.create("Enlarge Rois");
+	Dialog.addNumber("Number of pixels, (0 for no modif.)", 2);
+	Dialog.show();
+
+	enlarge=Dialog.getNumber();
+
+	if(enlarge!=0){
+		for(i=0; i<roiManager("Count")-2; i++){
+			roiManager("Select", i);
+			run("Enlarge...", "enlarge="+enlarge);
+			roiManager("Update");
+		}
+	}
 }
 
 //----------------------------------------
@@ -107,12 +123,12 @@ function quantify(){
 	run("Clear Results");
 	
 	for(t=1; t<=frames; t++){
-		Stack.setFrame(t);
 		row=nResults;
 		setResult("Time_(sec)", row, time[t-1]);
 		
 		for(i=0; i<roiManager("Count"); i++){
 			roiManager("Select", i);
+			Stack.setFrame(t);
 			getStatistics(area, mean, min, max, std, histogram);
 			
 			column="Roi"+(i+1);
