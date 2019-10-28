@@ -17,6 +17,7 @@ This macro expects the user to have:
 * A dataset opened as a hyperstack.
 * A file containg the outlines of all FRAPed regions of interest. This file should be saved as a Metamorph rgn file.
 
+**_Alternatively, this repository contains an example dataset that may be used to test the workflow. It has been acquired by Xiaomin Zhang at the [Bordeaux Imaging Centre](http://www.bic.u-bordeaux.fr/)._**
 
 ### Using the macro
 1. Make sure your ImageJ is up-to-date: go to Help/Update and make sure you are running the latest version.
