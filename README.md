@@ -35,24 +35,24 @@ This macro expects the user to have:
 ### Generating the time stamps
 Through the graphical user interface, durations for the pre-bleach, first post-bleach period and second post-bleach period are asked. The corresponding time intervalles are also requested and stored. Based on user provided data, the timestamps for each timepoint are calculated.
 
-![GUI](images/GUI.png)
+![GUI](Images/GUI.png)
 
 ### Pre-processing
 Pre-procesing is performed through three steps:
 
 1. The user is asked to point at the Metamorph region file containing the locations of bleached areas. A pop-up window will propose to re-adjust manually the ROIs so that they fit onto the structures of interest.
 
-![Adjust_ROIs](images/Adjust_ROIs.png)
+![Adjust_ROIs](Images/Adjust_ROIs.png)
 
 2. Two additionnal ROIs are needed, which the user will have to draw:
 	1. A first reference ROI, where the fluorescence is not supposed to have been perturbed by the FRAP experiment or to have moved during the process. It will be used to estimate and compensate for the observationnal photobleaching.
 	2. A second reference ROI where the background/non specific signal will be estimated and used to get a "background free" signal.
 
-![Reference_ROIs](images/Reference_ROIs.png)
+![Reference_ROIs](Images/Reference_ROIs.png)
 	
 3. Due to possible mis-targetting of the FRAP system and/or slight sample displacements during the acquisition, the ROIs might not encompass the full signal all the way through the experiment. Therefore, the user is asked wheither a ROI dilation should be performed: the extend of dilation might be defined using a pop-up dialog box.
 
-![Dilate_ROIs](images/Dilate_ROIs.png)
+![Dilate_ROIs](Images/Dilate_ROIs.png)
 
 4. Finally, to compensate for potential drift during the acquisition, image registration is performed using the [StackReg plugin](http://bigwww.epfl.ch/thevenaz/stackreg/) and its "Rigid Body" algorithm.
 
