@@ -67,3 +67,6 @@ Pre-procesing is performed through three steps:
 5. Bleaching correction is performed by making the ratio between the background corrected intensity of the ROI and the background corrected intensity of the reference ROI. Results are stored in a new column, named after the original ROI, to which is appended the "-bkgd-corr_bleach-corr" suffix.
 6. Normalization is performed by dividing the background and bleach corrected at any time within the serie by the value obtained at for the first timepoint.
 7. Finally, a plot is generated presenting for all ROIs the corrected normalised values as a function of time.
+
+
+### This code is associated with the paper from Zhang et al., "A proline-rich motif on VGLUT1 reduces synaptic vesicle super-pool and spontaneous release frequency". eLife, 2019. http://dx.doi.org/10.7554/eLife.50401
